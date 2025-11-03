@@ -12,30 +12,44 @@
   <div class="container">
     <h2 class="text-center">Student List</h2>
 
+    <!-- Add Student Form -->
     <div class="form-inline text-center add-section">
+      <input type="text" class="form-control" placeholder="Roll No" ng-model="newStudent.rollNo">
       <input type="text" class="form-control" placeholder="Enter Name" ng-model="newStudent.name">
       <input type="number" class="form-control" placeholder="Enter Marks" ng-model="newStudent.marks">
-      <input type="text" class="form-control" placeholder="Enter Grade" ng-model="newStudent.grade">
       <button class="btn btn-success" ng-click="addStudent()">Add Student</button>
     </div>
 
+    <!-- Search Filters -->
     <div class="text-center search-section">
-      <input type="text" class="form-control" placeholder="Search by Name" ng-model="searchText">
+      <input type="text" class="form-control" placeholder="Search by Name" ng-model="searchText.name">
+      <input type="text" class="form-control" placeholder="Search by Roll No" ng-model="searchText.rollNo">
+      <input type="text" class="form-control" placeholder="Search by Grade" ng-model="searchText.grade">
     </div>
 
+    <!-- Sorting Buttons -->
+    <div class="text-center sort-section">
+      <button class="btn btn-info" ng-click="sortBy('rollNo')">Sort by Roll No</button>
+      <button class="btn btn-info" ng-click="sortBy('name')">Sort by Name</button>
+      <button class="btn btn-info" ng-click="sortBy('marks')">Sort by Marks</button>
+      <button class="btn btn-info" ng-click="sortBy('grade')">Sort by Grade</button>
+    </div>
+
+    <!-- Student Table -->
     <div ng-if="students.length > 0">
       <table class="table table-bordered table-striped table-hover text-center">
         <thead>
           <tr>
+            <th>Roll No</th>
             <th>Name</th>
             <th>Marks</th>
             <th>Grade</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Automatically sorts by marks(desc) and name(asc) -->
-          <tr ng-repeat="student in (students | filter:{name: searchText} | orderBy:['-marks','name']) as filteredStudents"
+          <tr ng-repeat="student in (students | filter:searchText | orderBy: sortColumn : reverseSort) as filteredStudents"
               highlight-topper="student.marks === topMarks">
+            <td>{{ student.rollNo }}</td>
             <td>{{ student.name }}</td>
             <td>{{ student.marks }}</td>
             <td>{{ student.grade }}</td>
@@ -44,7 +58,7 @@
       </table>
 
       <p class="text-center text-danger" ng-if="filteredStudents.length === 0">
-        No student found with that name.
+        No student found with that search criteria.
       </p>
     </div>
 

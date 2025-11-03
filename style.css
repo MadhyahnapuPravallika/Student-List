@@ -1,64 +1,21 @@
 body {
-  background-color: hsl(211, 67%, 92%);
-  font-family: 'Arial';
+  background-color: #f8f8f8;
+  font-family: "Arial";
 }
 
 .container {
-  margin-top: 30px;
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
-  max-width: 900px;
+  margin-top: 40px;
 }
 
-h2 {
-  margin-bottom: 25px;
-  font-weight: 600;
+.add-section input,
+.search-section input {
+  margin: 5px;
 }
-
-/* Add Student Section */
-.add-section {
-  margin-bottom: 20px;
-}
-.add-section .form-control {
-  width: 200px;
-  margin-right: 8px;
-  margin-bottom: 10px;
-}
-
-/* Search Section */
-.search-section {
-  margin: 15px 0;
-}
-.search-section .form-control {
-  width: 70%;
-  margin: 0 auto;
-}
-
-/* Sort Section */
 .sort-section {
-  margin: 20px 0; /* adds gap before table */
-}
-.sort-section .btn {
-  margin: 0 8px;
+  margin: 20px 0;
 }
 
-/* Table */
-.table {
-  margin-top: 15px;
-}
-
-/* Highlighted topper */
 .highlight {
-  background-color: #fff3cd !important; /* pale yellow */
-  font-weight: 600;
-  border-left: 5px solid #ffc107;
-}
-
-/* Messages */
-.text-center.text-danger,
-.text-center.text-muted {
-  margin-top: 15px;
-  font-size: 15px;
+  background-color: #d4edda !important;
+  font-weight: bold;
 }
