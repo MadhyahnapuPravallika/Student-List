@@ -22,9 +22,9 @@
 
     <!-- Search Filters -->
     <div class="text-center search-section">
-      <input type="text" class="form-control" placeholder="Search by Name" ng-model="searchText.name">
-      <input type="text" class="form-control" placeholder="Search by Roll No" ng-model="searchText.rollNo">
-      <input type="text" class="form-control" placeholder="Search by Grade" ng-model="searchText.grade">
+      <input type="text" class="form-control" placeholder="Search by Name" ng-model="searchName">
+      <input type="text" class="form-control" placeholder="Search by Roll No" ng-model="searchRoll">
+      <input type="text" class="form-control" placeholder="Search by Grade" ng-model="searchGrade">
     </div>
 
     <!-- Sorting Buttons -->
@@ -47,7 +47,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="student in (students | filter:searchText | orderBy: sortColumn : reverseSort) as filteredStudents"
+          <tr ng-repeat="student in students | filter:multiSearchFilter | orderBy:sortColumn:reverseSort"
               highlight-topper="student.marks === topMarks">
             <td>{{ student.rollNo }}</td>
             <td>{{ student.name }}</td>
@@ -56,10 +56,6 @@
           </tr>
         </tbody>
       </table>
-
-      <p class="text-center text-danger" ng-if="filteredStudents.length === 0">
-        No student found with that search criteria.
-      </p>
     </div>
 
     <p class="text-center text-muted" ng-if="students.length === 0">

@@ -19,7 +19,6 @@ app.controller("StudentController", function($scope) {
   $scope.sortColumn = "rollNo";
   $scope.reverseSort = false;
   $scope.topMarks = null;
-  $scope.searchText = {};
 
   // Add Student
   $scope.addStudent = function() {
@@ -70,4 +69,17 @@ app.controller("StudentController", function($scope) {
   $scope.$watchCollection("students", function() {
     $scope.updateTopMarks();
   });
+
+  // Multi-field filter (shows results if any field matches)
+  $scope.multiSearchFilter = function(student) {
+    var nameMatch = $scope.searchName && student.name.toLowerCase().includes($scope.searchName.toLowerCase());
+    var rollMatch = $scope.searchRoll && student.rollNo.toString().includes($scope.searchRoll);
+    var gradeMatch = $scope.searchGrade && student.grade.toLowerCase().includes($scope.searchGrade.toLowerCase());
+
+    // Return true if any field matches (OR condition)
+    return (
+      !$scope.searchName && !$scope.searchRoll && !$scope.searchGrade ||
+      nameMatch || rollMatch || gradeMatch
+    );
+  };
 });
