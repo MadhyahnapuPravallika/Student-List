@@ -8,7 +8,7 @@ Automatic Sorting – Students are sorted alphabetically by name and numerically
 Highlight Top Performer – A custom AngularJS directive highlights the student with the highest marks.
 Responsive UI – Clean layout using Bootstrap and custom CSS.
 
-Concepts Used
+Concepts Used:
 ng-app – Defines the AngularJS application.
 ng-controller – Connects HTML view with the controller logic.
 ng-model – Creates two-way data binding between inputs and variables.
@@ -17,7 +17,7 @@ filter – Filters the student list based on the search text.
 orderBy – Sorts the student data automatically.
 Custom Directive (highlightTopper) – Highlights the student with the highest marks.
 
-How to Run
+How to Run:
 Clone or download the repository.
 Open the folder in VS Code or any code editor.
 Open index.html directly in the browser or run it via Live Server.
