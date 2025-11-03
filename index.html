@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="studentApp">
+<head>
+  <meta charset="utf-8" />
+  <title>Dynamic Student List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="StudentController">
+
+  <div class="container">
+    <h2 class="text-center">Student List</h2>
+
+    <div class="form-inline text-center add-section">
+      <input type="text" class="form-control" placeholder="Enter Name" ng-model="newStudent.name">
+      <input type="number" class="form-control" placeholder="Enter Marks" ng-model="newStudent.marks">
+      <input type="text" class="form-control" placeholder="Enter Grade" ng-model="newStudent.grade">
+      <button class="btn btn-success" ng-click="addStudent()">Add Student</button>
+    </div>
+
+    <div class="text-center search-section">
+      <input type="text" class="form-control" placeholder="Search by Name" ng-model="searchText">
+    </div>
+
+    <div ng-if="students.length > 0">
+      <table class="table table-bordered table-striped table-hover text-center">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Marks</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Automatically sorts by marks(desc) and name(asc) -->
+          <tr ng-repeat="student in (students | filter:{name: searchText} | orderBy:['-marks','name']) as filteredStudents"
+              highlight-topper="student.marks === topMarks">
+            <td>{{ student.name }}</td>
+            <td>{{ student.marks }}</td>
+            <td>{{ student.grade }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="text-center text-danger" ng-if="filteredStudents.length === 0">
+        No student found with that name.
+      </p>
+    </div>
+
+    <p class="text-center text-muted" ng-if="students.length === 0">
+      No students added yet.
+    </p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
