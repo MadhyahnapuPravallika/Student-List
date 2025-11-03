@@ -5,6 +5,7 @@ Features:
 Add Students Dynamically – Enter Name, Marks, and Grade
 Search Functionality – Filter students by name in real time.
 Automatic Sorting – Students are sorted alphabetically by name and numerically by marks.
+Conditional Grade Assignment – Grades are automatically assigned using conditional statements based on student marks.
 Highlight Top Performer – A custom AngularJS directive highlights the student with the highest marks.
 Responsive UI – Clean layout using Bootstrap and custom CSS.
 
